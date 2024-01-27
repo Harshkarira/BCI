@@ -4,6 +4,8 @@ import App from './App.jsx'
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import bciReducer from './features/bciSlice';
+import 'tailwindcss/tailwind.css';
+
 
 const store = configureStore({
   reducer: {

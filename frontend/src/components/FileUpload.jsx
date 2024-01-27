@@ -63,11 +63,21 @@ function FileUpload() {
 
   return (
     <div>
-      <h1>BCI</h1>
+      <h1 className="text-4xl font-bold mb-4">BCI</h1>
       <input type="file" onChange={handleFileChange} /> <br />
-      <button onClick={handleUpload}>Upload File</button>
-      <button onClick={handleDeleteFile}>Delete File</button>
-      {uploadStatus && <h3 style={{color:"green"}}>{uploadStatus}</h3>}
+      <button
+        className="inline-block px-6 py-3 mt-4 bg-blue-500 text-white border border-blue-700 rounded-md hover:bg-blue-700"
+        onClick={handleUpload}
+      >
+        Upload File
+      </button>
+      <button
+        className="inline-block px-6 py-3 m-4 bg-blue-500 text-white border border-blue-700 rounded-md hover:bg-blue-700"
+        onClick={handleDeleteFile}
+      >
+        Delete File
+      </button>
+      {uploadStatus && <h3 className="text-green-400">{uploadStatus}</h3>}
       {file && (
         <div>
           <h2>PDF Preview:</h2>

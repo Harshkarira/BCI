@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import '../assets/spinner.css'
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 function Results() {
   const { powValues, prediction } = useSelector((state) => state.bci);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,10 +18,15 @@ function Results() {
   return (
     <div>
       {isLoading ? (
-        <div className="spinner-container">
-        <div className="spinner"></div>
-        <p id='res'>Generating results...</p>
-      </div>
+        <div>
+          <div className="mt-60 flex items-center justify-center">
+            <div className="border-t-4 border-blue-500 border-solid w-16 h-16 border-r-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+          </div>
+
+          <p id="res" className="text-center text-3xl font-bold mt-4">
+            Generating results...
+          </p>
+        </div>
       ) : (
         <div>
           <h1>Results</h1>
