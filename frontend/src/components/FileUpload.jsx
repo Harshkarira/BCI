@@ -42,9 +42,10 @@ function FileUpload() {
         dispatch(updatePrediction(responseData.predicted_attention_span));
 
         setUploadStatus("File uploaded successfully");
+
         setTimeout(() => {
           navigate("/results");
-        }, 3000);
+        }, 2000);
       } else {
         console.error("File upload failed");
         setUploadStatus("File upload failed");
@@ -66,10 +67,7 @@ function FileUpload() {
       <input type="file" onChange={handleFileChange} /> <br />
       <button onClick={handleUpload}>Upload File</button>
       <button onClick={handleDeleteFile}>Delete File</button>
-      {uploadStatus && <div>{uploadStatus}</div>}
-      {uploadStatus === "File uploaded successfully" && (
-        <h1 style={{color:"green"}}>Generating Results...</h1>
-      )}
+      {uploadStatus && <h3 style={{color:"green"}}>{uploadStatus}</h3>}
       {file && (
         <div>
           <h2>PDF Preview:</h2>
