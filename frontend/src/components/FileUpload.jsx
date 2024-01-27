@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { updatePowValues, updatePrediction } from "../features/bciSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function FileUpload() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
