@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { updatePowValues, updatePrediction } from "../features/bciSlice";
@@ -9,7 +9,7 @@ function FileUpload() {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
-
+  
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -61,9 +61,12 @@ function FileUpload() {
     setUploadStatus(null);
   };
 
+  
   return (
     <div>
       <h1 className="text-4xl font-bold mb-4">BCI</h1>
+      {/* <div className="transition-all duration-700 h-40 w-40 bg-yellow-300"></div> */}
+      
       <input type="file" onChange={handleFileChange} /> <br />
       <button
         className="inline-block px-6 py-3 mt-4 bg-blue-500 text-white border border-blue-700 rounded-md hover:bg-blue-700"
