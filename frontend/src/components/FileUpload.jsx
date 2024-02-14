@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import brain from "../assets/images/brain.jpg";
 import brain2 from "../assets/images/brain2.jpg";
+import Navbar from "./Navbar";
+import { WiMoonAltThirdQuarter } from "react-icons/wi";
 
 function FileUpload() {
   const dispatch = useDispatch();
@@ -18,6 +20,14 @@ function FileUpload() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
     setUploadStatus(null);
+  };
+  const [isDarkMode, setIsDarkMode] = useState(
+    window.matchMedia("(prefers-color-scheme: light)").matches
+  );
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+    document.documentElement.classList.toggle("light");
   };
 
   const handleUpload = async () => {
@@ -65,157 +75,103 @@ function FileUpload() {
     setUploadStatus(null);
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
-
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle("dark");
-  };
-
   return (
     <>
-      <div className={` p-4 ${isDarkMode ? "bg-gray-900" : "bg-gray-200"}`}>
-        <button
-          onClick={toggleTheme}
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
-            isDarkMode ? "border-white" : "border-black"
-          }`}
-        >
-          Toggle Theme
-        </button>
-        <div className="relative">
-          <h1
-            className={`text-4xl font-bold mb-0 text-center py-8 ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
-          >
-            EEG Cognitive Abilities
-          </h1>
-          <div
-            className={`text-xl px-60 ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
-          >
-            The EEG Cognitive Abilities project aims to explore and analyze
-            cognitive functions using Electroencephalography (EEG) technology.
-            This innovative initiative focuses on understanding how the brain's
-            electrical activity correlates with cognitive processes such as
-            attention, memory, and problem-solving. By recording and
-            interpreting EEG signals, the project seeks to uncover patterns and
-            trends that shed light on cognitive abilities and their variations
-            across individuals. <br /> <br />
-            Utilizing advanced signal processing and machine learning
-            techniques, the project aims to develop predictive models for
-            cognitive states based on EEG data. The outcomes have broad
-            implications for neuroscience, psychology, and potential
-            applications in neurofeedback and cognitive enhancement. Through the
-            integration of cutting-edge technology and interdisciplinary
-            research, the EEG Cognitive Abilities project strives to contribute
-            valuable insights into the functioning of the human brain, paving
-            the way for advancements in cognitive science and personalized
-            approaches to cognitive enhancement and mental well-being.
-            <br />
-            <br />
-            <div>
-              <p>
-                The F3 and F4 nodes Located on the frontal lobes of the brain,
-                these nodes are associated with cognitive functions like
-                decision making and attention.
-              </p>
-              <h3>F3 Node:- </h3>
-              <div className="ml-10">
-                <li>
-                  <strong>Executive Functions:</strong> Primarily associated
-                  with executive functions.
-                </li>
-                <li>
-                  <strong>Beta Waves:</strong> Reflect active mental engagement.
-                </li>
-                <li>
-                  <strong>Theta Waves:</strong> Indicate relaxation or
-                  meditative states.
-                </li>
-              </div>
-              <h3>F4 Node:- </h3>
-              <div className="ml-10">
-                <li>
-                  <strong>Executive Functions:</strong> Symmetrically opposite
-                  to F3, also involved in executive functions.
-                </li>
-                <li>
-                  <strong>Beta Waves:</strong> Similar to F3, indicating active
-                  mental states.
-                </li>
-                <li>
-                  <strong>Theta Waves:</strong> Reflect relaxation or meditative
-                  states.
-                </li>
-              </div>
-              <br />
-              <p>
-                These nodes help monitor brain activity during tasks and can
-                provide insights into cognitive and emotional states.
-              </p>
-            </div>
+      <div
+        className={` h-screen p-4 ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
+      >
+        <div className="flex justify-around">
+          <Navbar isDarkMode={isDarkMode} />
+          <div>
+            <button
+              onClick={toggleTheme}
+              className={`flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ${
+                isDarkMode ? "border-white" : "border-black"
+              }`}
+            >
+              <WiMoonAltThirdQuarter className="mr-2" />
+              Toggle Theme
+            </button>
           </div>
-          <img
-            src={brain2}
-            className="absolute h-72 mt-20 ml-20 rounded-2xl shadow-2xl"
-            alt="left img"
-          />
-          <img
-            src={brain}
-            alt="right img"
-            className="absolute right-0 h-72 mr-20 mt-20 rounded-2xl shadow-2xl"
-          />
-          <div className="mt-80 flex justify-center">
-            <div className="rounded-md p-4">
-              <input
-                type="file"
-                className={isDarkMode ? "text-white" : "text-black"}
-                onChange={handleFileChange}
-              />
-              <br />
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className={`inline-block px-6 py-3 mt-4 rounded-md ${
-                  isDarkMode
-                    ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
-                    : "bg-blue-500 text-black border border-black"
-                }`}
-                onClick={handleUpload}
-              >
-                Upload File
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className={`inline-block px-6 py-3 m-4 rounded-md ${
-                  isDarkMode
-                    ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
-                    : "bg-blue-500 text-black border border-gray-700"
-                }`}
-                onClick={handleDeleteFile}
-              >
-                Delete File
-              </motion.button>
-              {uploadStatus && (
-                <h3 className="text-green-400">{uploadStatus}</h3>
-              )}
+        </div>
+        <div className="">
+          <div className="flex justify-evenly items-center w-100 h-100">
+            <img
+              src={brain2}
+              className="h-72 mt-20 ml-20 rounded-2xl shadow-2xl"
+              alt="left img"
+            />
+
+            <div
+              className={`" flex justify-center items-center rounded-lg p-10 ${
+                isDarkMode ? "border border-white" : "border border-black"
+              } mt-20 w-96 h-96 bg-gray-100"`}
+            >
+              <div className="rounded-md p-4">
+                <input
+                  type="file"
+                  className={`${
+                    isDarkMode
+                      ? "text-white border border-white"
+                      : "text-black border border-black"
+                  } mb-4 p-10 rounded-md  w-80 border-dashed`}
+                  onChange={handleFileChange}
+                  placeholder="Upload PDF File"
+                />
+                <br />
+                <div className="buttons flex justify-evenly mt-4">
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`flex p-4 rounded-md ${
+                      isDarkMode
+                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
+                        : "bg-blue-500 text-black border border-black hover:bg-lime-200 hover:text-black"
+                    }`}
+                    onClick={handleUpload}
+                  >
+                    Upload File
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`flex p-4 rounded-md ${
+                      isDarkMode
+                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
+                        : "bg-blue-500 text-black border border-gray-700 hover:bg-lime-200 hover:text-black"
+                    }`}
+                    onClick={handleDeleteFile}
+                  >
+                    Delete File
+                  </motion.button>
+                </div>
+                {uploadStatus && (
+                  <h3 className="text-green-400">{uploadStatus}</h3>
+                )}
+              </div>
             </div>
+            <img
+              src={brain}
+              alt="right img"
+              className="h-72 mr-20 mt-20 rounded-2xl shadow-2xl"
+            />
           </div>
-          <div className="bg-inherit pt-40"></div>
           {file && (
             <div>
-              <h2>PDF Preview:</h2>
-              <Worker
-                workerUrl={`https://unpkg.com/pdfjs-dist@${"3.6.172"}/build/pdf.worker.min.js`}
+              <h2
+                className={`${
+                  isDarkMode ? "text-white" : "text-black"
+                } text-2xl text-center p-10 underline`}
               >
-                <Viewer fileUrl={URL.createObjectURL(file)} />
-              </Worker>
+                PDF Preview:
+              </h2>
+              <div className="px-32">
+                <Worker
+                  workerUrl={`https://unpkg.com/pdfjs-dist@${"3.6.172"}/build/pdf.worker.min.js`}
+                >
+                  <Viewer fileUrl={URL.createObjectURL(file)} />
+                </Worker>
+              </div>
             </div>
           )}
         </div>
