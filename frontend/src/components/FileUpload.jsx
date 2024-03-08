@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
-import { updatePowValues, updatePrediction } from "../features/bciSlice";
+import { updatePowValues,updateAttentionPrediction,updateOrderPrediction,updateMemoryPrediction } from "../features/bciSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -50,10 +50,22 @@ function FileUpload() {
             pow_f3_beta_l: responseData.pow_f3_beta_l,
             pow_f4_theta: responseData.pow_f4_theta,
             pow_f4_beta_l: responseData.pow_f4_beta_l,
+            pow_f3_gamma: responseData.pow_f3_gamma,
+            pow_f4_gamma: responseData.pow_f4_gamma,
+            pow_f7_gamma: responseData.pow_f7_gamma,
+            pow_f8_gamma: responseData.pow_f8_gamma,
+            pow_t7_gamma: responseData.pow_t7_gamma,
+            pow_t8_gamma: responseData.pow_t8_gamma,
+            pow_f7_theta: responseData.pow_f7_theta,
+            pow_f8_theta: responseData.pow_f8_theta,
+            pow_t7_theta: responseData.pow_t7_theta,
+            pow_t8_theta: responseData.pow_t8_theta,
           })
         );
 
-        dispatch(updatePrediction(responseData.predicted_attention_span));
+        dispatch(updateAttentionPrediction(responseData.predictions[0]));
+        dispatch(updateOrderPrediction(responseData.predictions[1]));
+        dispatch(updateMemoryPrediction(responseData.predictions[2]));
 
         setUploadStatus("File uploaded successfully");
 
