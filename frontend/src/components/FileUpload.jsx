@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
-import { updatePowValues,updateAttentionPrediction,updateOrderPrediction,updateMemoryPrediction } from "../features/bciSlice";
+import {
+  updatePowValues,
+  updateAttentionPrediction,
+  updateOrderPrediction,
+  updateMemoryPrediction,
+} from "../features/bciSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,6 +14,8 @@ import brain from "../assets/images/brain.jpg";
 import brain2 from "../assets/images/brain2.jpg";
 import Navbar from "./Navbar";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
+import { FaUpload } from "react-icons/fa6";
+import { MdDeleteForever } from "react-icons/md";
 
 function FileUpload() {
   const dispatch = useDispatch();
@@ -90,7 +97,9 @@ function FileUpload() {
   return (
     <>
       <div
-        className={` h-screen p-4 ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
+        className={`min-h-screen p-4 ${
+          isDarkMode ? "bg-gray-900" : "bg-gray-50"
+        }`}
       >
         <div className="flex justify-around">
           <Navbar isDarkMode={isDarkMode} />
@@ -122,7 +131,7 @@ function FileUpload() {
               <div className="rounded-md p-4">
                 <input
                   type="file"
-                  className={`${
+                  className={`text-center ${
                     isDarkMode
                       ? "text-white border border-white"
                       : "text-black border border-black"
@@ -130,30 +139,33 @@ function FileUpload() {
                   onChange={handleFileChange}
                   placeholder="Upload PDF File"
                 />
+
                 <br />
                 <div className="buttons flex justify-evenly mt-4">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className={`flex p-4 rounded-md ${
+                    className={`flex p-4 rounded-md justify-center items-center ${
                       isDarkMode
-                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
-                        : "bg-blue-500 text-black border border-black hover:bg-lime-200 hover:text-black"
+                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:border-lime-200 hover:text-black"
+                        : "bg-blue-500 text-white border border-white hover:bg-lime-200 hover:border-lime-200  hover:text-black"
                     }`}
                     onClick={handleUpload}
                   >
+                    <FaUpload className="mr-2" />
                     Upload File
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className={`flex p-4 rounded-md ${
+                    className={`flex p-4 rounded-md justify-center items-center ${
                       isDarkMode
-                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-lime-200 hover:text-black"
-                        : "bg-blue-500 text-black border border-gray-700 hover:bg-lime-200 hover:text-black"
+                        ? "bg-blue-500 text-white border border-blue-700 hover:bg-red-300 hover:border-red-200 hover:text-black"
+                        : "bg-blue-500 text-white border border-white hover:bg-red-300 hover:border-red-200 hover:text-black"
                     }`}
                     onClick={handleDeleteFile}
                   >
+                    <MdDeleteForever className="mr-2" />
                     Delete File
                   </motion.button>
                 </div>

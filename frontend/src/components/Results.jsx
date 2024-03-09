@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { VscOutput } from "react-icons/vsc";
+import { FaInfoCircle } from "react-icons/fa";
+import { GoHomeFill } from "react-icons/go";
 
 const Results = () => {
   const {
@@ -105,12 +108,25 @@ const Results = () => {
       ) : (
         <div className="flex">
           <div className="bg-black text-white p-4 h-screen w-56 ">
-            <p className="text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded">
-              <Link to="/">Home</Link>
-            </p>
-            <p className="text-lg font-serif cursor-pointer bg-slate-800 rounded p-2">
+            <Link
+              to="/"
+              className="flex items-center text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded"
+            >
+              <GoHomeFill className="mr-2" />
+              Home
+            </Link>
+              <Link
+                to="/about"
+                className="flex items-center text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded"
+              >
+                <FaInfoCircle className="mr-2" />
+                About
+              </Link>
+
+            <div className="flex items-center text-lg font-serif cursor-pointer bg-slate-800 rounded p-2">
+              <VscOutput className="mr-2" />
               Results
-            </p>
+            </div>
           </div>
           <div className="w-full bg-gray-300">
             <table className="table w-full text-[12px] border-collapse border border-gray-800 mt-4">
@@ -160,51 +176,56 @@ const Results = () => {
                 {/* Add more rows for additional POW values if needed */}
               </tbody>
             </table>
-
-            <div className="scale-x-[-1] rotate-180 flex justify-around  border border-gray-500 mt-3 rounded">
-              <div
-                className={`relative border-2 rounded border-black ml-4 w-44 bg-${attention_barProperties.color}-500 transition-all duration-1000 ${attention_barProperties.height}`}
-              ></div>
-              <div
-                className={`relative border-2 rounded border-black ml-4 w-44 bg-${order_barProperties.color}-500 transition-all duration-1000 ${order_barProperties.height}`}
-              ></div>
-              <div
-                className={`relative border-2 rounded border-black ml-4 w-44 bg-${memory_barProperties.color}-500 transition-all duration-1000 ${memory_barProperties.height}`}
-              ></div>
-            </div>
-            <div className="flex justify-around">
-              <p>Attention Span</p>
-              <p>Cognitive Processing</p>
-              <p>Emotional Processing</p>
-            </div>
-            <div className="flex ">
-              <div className="bg-white inline-block rounded-xl p-3 h-32 mr-4 mt-4">
-                <div class="flex items-center justify-between">
-                  <div class="pr-2 font-light">Low</div>
-                  <div class=" w-8 h-1 bg-red-500"></div>
-                </div>
-                <div class="flex items-center mt-3 justify-between">
-                  <div class="pr-2 font-light">Moderate</div>
-                  <div class="w-8 h-1 bg-yellow-500"></div>
-                </div>
-                <div class="flex items-center mt-3 justify-between">
-                  <div class="pr-2 font-light">High</div>
-                  <div class="w-8 h-1 bg-green-500"></div>
+            <div className="graph grid grid-cols-6">
+              <div className="scale-x-[-1] rotate-180 flex justify-evenly  border border-gray-500 mt-3 mx-10 rounded col-span-5">
+                <div
+                  className={`relative border-2 rounded border-black ml-4 w-44 bg-${attention_barProperties.color}-500 transition-all duration-1000 ${attention_barProperties.height}`}
+                ></div>
+                <div
+                  className={`relative border-2 rounded border-black ml-4 w-44 bg-${order_barProperties.color}-500 transition-all duration-1000 ${order_barProperties.height}`}
+                ></div>
+                <div
+                  className={`relative border-2 rounded border-black ml-4 w-44 bg-${memory_barProperties.color}-500 transition-all duration-1000 ${memory_barProperties.height}`}
+                ></div>
+              </div>
+              <div className="flex justify-evenly col-span-5">
+                <p>Attention Span</p>
+                <p>Cognitive Processing</p>
+                <p>Emotional Processing</p>
+              </div>
+              <div className="legend col-span-1 mx-10">
+                <div className="bg-white inline-block rounded-xl p-3 h-32">
+                  <div className="flex items-center justify-between">
+                    <div className="pr-2 font-light">Low</div>
+                    <div className=" w-8 h-1 bg-red-500"></div>
+                  </div>
+                  <div className="flex items-center mt-3 justify-between">
+                    <div className="pr-2 font-light">Moderate</div>
+                    <div className="w-8 h-1 bg-yellow-500"></div>
+                  </div>
+                  <div className="flex items-center mt-3 justify-between">
+                    <div className="pr-2 font-light">High</div>
+                    <div className="w-8 h-1 bg-green-500"></div>
+                  </div>
                 </div>
               </div>
-              <div className="mt-5">
-              <p className="font-light">
+            </div>
+
+            <div className="flex border border-black rounded-2xl m-10">
+              <div className="p-6 text-justify">
+                <p className="font-light">
                   <b>Cognitive Processing</b>: Linked to higher-order cognitive
                   processing, associated with more efficient information
                   processing, better task performance, learning, or memory
                   encoding. Lower Gamma/Beta Ratio could suggest less efficient
                   information processing, lower task performance, difficulty
                   learning, or problems with memory encoding.
-                </p><br />
+                </p>
+                <br />
                 <p className="font-light">
                   <b>Emotional Processing and Memory Consolidation:</b>
-                  Connected to emotional processing and memory. Higher
-                  Lower Theta/Gamma Ratio: This might suggest weaker emotional
+                  Connected to emotional processing and memory. Higher Lower
+                  Theta/Gamma Ratio: This might suggest weaker emotional
                   responses or better memory consolidation.
                 </p>
               </div>
@@ -222,17 +243,17 @@ const Results = () => {
                 ></div>
 
                 <div className="bg-white inline-block rounded-xl p-3 h-32 mr-4 mt-4">
-                  <div class="flex items-center justify-between">
-                    <div class="pr-2 font-light">Low</div>
-                    <div class=" w-8 h-1 bg-red-500"></div>
+                  <div className="flex items-center justify-between">
+                    <div className="pr-2 font-light">Low</div>
+                    <div className=" w-8 h-1 bg-red-500"></div>
                   </div>
-                  <div class="flex items-center mt-3 justify-between">
-                    <div class="pr-2 font-light">Moderate</div>
-                    <div class="w-8 h-1 bg-yellow-500"></div>
+                  <div className="flex items-center mt-3 justify-between">
+                    <div className="pr-2 font-light">Moderate</div>
+                    <div className="w-8 h-1 bg-yellow-500"></div>
                   </div>
-                  <div class="flex items-center mt-3 justify-between">
-                    <div class="pr-2 font-light">High</div>
-                    <div class="w-8 h-1 bg-green-500"></div>
+                  <div className="flex items-center mt-3 justify-between">
+                    <div className="pr-2 font-light">High</div>
+                    <div className="w-8 h-1 bg-green-500"></div>
                   </div>
                 </div>
               </div>
