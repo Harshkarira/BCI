@@ -1,7 +1,5 @@
 # Brain-Computer Interface (BCI)
 
----
-
 Welcome to the Brain-Computer Interface (BCI) project repository!
 
 ## Overview
@@ -63,4 +61,3 @@ Ensure you have the following software installed:
 - Customize the frontend UI and backend logic as per project requirements.
 - Refer to individual directories for more detailed instructions and documentation.
 
----

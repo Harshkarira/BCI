@@ -1,7 +1,4 @@
-
 # Starting with the project
-
----
 
 This project utilizes Vite, React, and Tailwind CSS.
 
@@ -72,5 +69,3 @@ Tailwind CSS is pre-configured in this project. Customize Tailwind CSS classes t
 * [Vite](https://vitejs.dev/)
 * [React](https://react.dev/)
 * [Tailwind CSS](https://tailwindcss.com/docs/installation)
-
----

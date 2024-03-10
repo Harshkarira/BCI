@@ -1,7 +1,5 @@
 # Django Backend
 
----
-
 This backend used for uploading and managing PDF files via the frontend application.
 
 ## Prerequisites
@@ -77,4 +75,3 @@ pip install django
 - [Django Documentation](https://docs.djangoproject.com/)
 - [Python Documentation](https://docs.python.org/)
 
----
