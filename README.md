@@ -2,6 +2,8 @@
 
 Welcome to the Brain-Computer Interface (BCI) project repository!
 
+<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/l44QzsOLXxcrigdgI" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/stupid-smart-l44QzsOLXxcrigdgI">via GIPHY</a></p>
+
 ## Overview
 
 The BCI system is divided into two main components:
