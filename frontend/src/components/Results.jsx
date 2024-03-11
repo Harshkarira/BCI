@@ -52,7 +52,9 @@ const Results = () => {
           height: isTransitioned ? "h-80 bottom-0" : "h-1 bottom-30",
         };
       default:
-        return {};
+        return {
+          height: "h-0"
+        };
     }
   };
   const getorderBarProperties = () => {
@@ -68,7 +70,9 @@ const Results = () => {
           height: isTransitioned ? "h-80 bottom-0" : "h-1 bottom-30",
         };
       default:
-        return {};
+        return {
+          height: "h-0"
+        };
     }
   };
 
@@ -85,7 +89,9 @@ const Results = () => {
           height: isTransitioned ? "h-80 bottom-0" : "h-1 bottom-30",
         };
       default:
-        return {};
+        return {
+          height: "h-0"
+        };
     }
   };
 
@@ -115,13 +121,13 @@ const Results = () => {
               <GoHomeFill className="mr-2" />
               Home
             </Link>
-              <Link
-                to="/about"
-                className="flex items-center text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded"
-              >
-                <FaInfoCircle className="mr-2" />
-                About
-              </Link>
+            <Link
+              to="/about"
+              className="flex items-center text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded"
+            >
+              <FaInfoCircle className="mr-2" />
+              About
+            </Link>
 
             <div className="flex items-center text-lg font-serif cursor-pointer bg-slate-800 rounded p-2">
               <VscOutput className="mr-2" />
@@ -129,7 +135,7 @@ const Results = () => {
             </div>
           </div>
           <div className="w-full bg-gray-300">
-            <table className="table w-full text-[12px] border-collapse border border-gray-800 mt-4">
+            <table className="table w-full text-[12px] border-collapse border border-gray-800 mt-4 ">
               <thead>
                 <tr className="bg-gray-200">
                   <th className="p-2 font-bold text-center">POW.F3.Theta</th>
@@ -177,7 +183,7 @@ const Results = () => {
               </tbody>
             </table>
             <div className="graph grid grid-cols-6">
-              <div className="scale-x-[-1] rotate-180 flex justify-evenly  border border-gray-500 mt-3 mx-10 rounded col-span-5">
+              <div className="scale-x-[-1] rotate-180 flex justify-evenly  border border-gray-500 my-5 mx-10 rounded-2xl col-span-5">
                 <div
                   className={`relative border-2 rounded border-black ml-4 w-44 bg-${attention_barProperties.color}-500 transition-all duration-1000 ${attention_barProperties.height}`}
                 ></div>
@@ -188,12 +194,7 @@ const Results = () => {
                   className={`relative border-2 rounded border-black ml-4 w-44 bg-${memory_barProperties.color}-500 transition-all duration-1000 ${memory_barProperties.height}`}
                 ></div>
               </div>
-              <div className="flex justify-evenly col-span-5">
-                <p>Attention Span</p>
-                <p>Cognitive Processing</p>
-                <p>Emotional Processing</p>
-              </div>
-              <div className="legend col-span-1 mx-10">
+              <div className="legend col-span-1 mx-10 my-20">
                 <div className="bg-white inline-block rounded-xl p-3 h-32">
                   <div className="flex items-center justify-between">
                     <div className="pr-2 font-light">Low</div>
@@ -208,6 +209,11 @@ const Results = () => {
                     <div className="w-8 h-1 bg-green-500"></div>
                   </div>
                 </div>
+              </div>
+              <div className="flex justify-evenly col-span-5">
+                <p className="ml-14">Attention Span</p>
+                <p>Cognitive Processing</p>
+                <p>Emotional Processing</p>
               </div>
             </div>
 

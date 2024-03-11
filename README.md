@@ -61,3 +61,8 @@ Ensure you have the following software installed:
 - Customize the frontend UI and backend logic as per project requirements.
 - Refer to individual directories for more detailed instructions and documentation.
 
+## Contributors
+
+<a href="https://github.com/SiddhantKodolkar/BCI/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SiddhantKodolkar/BCI" alt="Contibutors"/>
+</a>

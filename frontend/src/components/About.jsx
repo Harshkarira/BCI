@@ -6,7 +6,7 @@ import { LuBrainCog } from "react-icons/lu";
 
 const About = () => {
   const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme: light)").matches
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   const toggleTheme = () => {
