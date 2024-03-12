@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,6 +14,7 @@ const Results = () => {
     memory_prediction,
   } = useSelector((state) => state.bci);
   const [isLoading, setIsLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [showDelayedDiv, setShowDelayedDiv] = useState(false);
   const [isTransitioned, setIsTransitioned] = useState(false);
   // Simulate a 3-second loading delay
@@ -113,7 +115,7 @@ const Results = () => {
         </div>
       ) : (
         <div className="flex">
-          <div className="bg-black text-white p-4 h-screen w-56 ">
+          <div className="bg-black text-white p-4 min-h-screen w-56 ">
             <Link
               to="/"
               className="flex items-center text-lg font-serif cursor-pointer p-2 mb-1 hover:bg-slate-800 rounded"
@@ -211,8 +213,8 @@ const Results = () => {
                 </div>
               </div>
               <div className="flex justify-evenly col-span-5">
-                <p className="ml-14">Attention Span</p>
-                <p>Cognitive Processing</p>
+                <p className="ml-10">Attention Span</p>
+                <p className="ml-4">Cognitive Processing</p>
                 <p>Emotional Processing</p>
               </div>
             </div>
