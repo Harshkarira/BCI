@@ -29,7 +29,7 @@ function FileUpload() {
     setUploadStatus(null);
   };
   const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme: light)").matches
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   const toggleTheme = () => {
