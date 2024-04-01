@@ -55,7 +55,7 @@ const Results = () => {
         };
       default:
         return {
-          height: "h-0"
+          height: "h-0",
         };
     }
   };
@@ -73,7 +73,7 @@ const Results = () => {
         };
       default:
         return {
-          height: "h-0"
+          height: "h-0",
         };
     }
   };
@@ -92,8 +92,43 @@ const Results = () => {
         };
       default:
         return {
-          height: "h-0"
+          height: "h-0",
         };
+    }
+  };
+
+  // Function to generate inference statements based on predictions
+  const renderInference = (attention, order, memory) => {
+    // Combine predictions for all three aspects
+    const combinedPrediction = attention + " " + order + " " + memory;
+    console.log(combinedPrediction);
+    switch (combinedPrediction) {
+      case "Low attention Weak Weak":
+        return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. Additionally, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function also seems weak, indicating potential challenges in retaining information.";
+      case "Low attention Weak Strong":
+        return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. Additionally, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. However, memory function seems to be relatively stronger, which could help in retaining information better than expected.";
+      case "Low attention Strong Weak":
+        return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. However, cognitive processing seems to be relatively stronger, indicating better problem-solving and decision-making abilities. Memory function, however, appears weak, suggesting potential challenges in retaining information.";
+      case "Low attention Strong Strong":
+        return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. However, cognitive processing seems to be relatively stronger, indicating better problem-solving and decision-making abilities. Memory function also appears to be relatively strong, which could help in retaining information better than expected.";
+      case "Moderate attention Weak Weak":
+        return "The EEG data suggests that the individual has a moderate attention span, which allows for decent concentration on tasks. However, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function also seems weak, indicating potential challenges in retaining information.";
+      case "Moderate attention Weak Strong":
+        return "The EEG data suggests that the individual has a moderate attention span, which allows for decent concentration on tasks. However, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function, however, seems relatively stronger, which could help in retaining information better than expected.";
+      case "Moderate attention Strong Weak":
+        return "The EEG data suggests that the individual has a moderate attention span, which allows for decent concentration on tasks. Additionally, cognitive processing seems to be relatively stronger, indicating better problem-solving and decision-making abilities. Memory function, however, appears weak, suggesting potential challenges in retaining information.";
+      case "Moderate attention Strong Strong":
+        return "The EEG data suggests that the individual has a moderate attention span, which allows for decent concentration on tasks. Additionally, both cognitive processing and memory function seem relatively strong, indicating efficient problem-solving, decision-making abilities, and better retention of information.";
+      case "High attention Weak Weak":
+        return "The EEG data suggests that the individual has a high attention span, allowing for excellent concentration on tasks. However, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function also seems weak, indicating potential challenges in retaining information.";
+      case "High attention Weak Strong":
+        return "The EEG data suggests that the individual has a high attention span, allowing for excellent concentration on tasks. However, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function, however, seems relatively stronger, which could help in retaining information better than expected.";
+      case "High attention Strong Weak":
+        return "The EEG data suggests that the individual has a high attention span, allowing for excellent concentration on tasks. Additionally, cognitive processing seems to be relatively stronger, indicating better problem-solving and decision-making abilities. Memory function, however, appears weak, suggesting potential challenges in retaining information.";
+      case "High attention Strong Strong":
+        return "The EEG data suggests that the individual has a high attention span, allowing for excellent concentration on tasks. Additionally, both cognitive processing and memory function seem relatively strong, indicating efficient problem-solving, decision-making abilities, and better retention of information.";
+      default:
+        return "";
     }
   };
 
@@ -218,26 +253,28 @@ const Results = () => {
                 <p>Emotional Processing</p>
               </div>
             </div>
-
             <div className="flex border border-black rounded-2xl m-10">
               <div className="p-6 text-justify">
-                <p className="font-light">
-                  <b>Cognitive Processing</b>: Linked to higher-order cognitive
-                  processing, associated with more efficient information
-                  processing, better task performance, learning, or memory
-                  encoding. Lower Gamma/Beta Ratio could suggest less efficient
-                  information processing, lower task performance, difficulty
-                  learning, or problems with memory encoding.
+                <h4 className="mb-4 text-2xl font-bold">Inference</h4>
+                <p className="text-lg">
+                  {renderInference(
+                    attention_prediction,
+                    order_prediction,
+                    memory_prediction
+                  )}
                 </p>
-                <br />
-                <p className="font-light">
-                  <b>Emotional Processing and Memory Consolidation:</b>
-                  Connected to emotional processing and memory. Higher Lower
-                  Theta/Gamma Ratio: This might suggest weaker emotional
-                  responses or better memory consolidation.
-                </p>
+                <div className="mt-6 text-sm text-gray-600">
+                  <p>
+                    <b>Note:</b> The EEG data analysis provided here should be
+                    considered as a supplementary tool for practitioners and not
+                    as a definitive diagnosis. Consultation with a qualified
+                    healthcare professional is recommended for accurate
+                    interpretation and decision-making.
+                  </p>
+                </div>
               </div>
             </div>
+
             {/* <div className="flex flex-row border border-gray-500 rounded m-3">
               <div className="w-1/2 border border-gray-500 flex flex-row justify-between rounded">
                 <div
