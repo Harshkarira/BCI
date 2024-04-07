@@ -97,10 +97,9 @@ const Results = () => {
   };
 
   // Function to generate inference statements based on predictions
-  const renderInference = (attention, order, memory) => {
+  const renderInference = () => {
     // Combine predictions for all three aspects
-    const combinedPrediction = attention + " " + order + " " + memory;
-    console.log(combinedPrediction);
+    const combinedPrediction = attention_prediction + " " + order_prediction + " " + memory_prediction;
     switch (combinedPrediction) {
       case "Low attention Weak Weak":
         return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. Additionally, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function also seems weak, indicating potential challenges in retaining information.";
@@ -259,57 +258,51 @@ const Results = () => {
             </div>
 
             <div className="graph grid grid-cols-4 max-sm:grid-cols-1 mt-10">
-              <div className="scale-x-[-1] rotate-180 flex justify-evenly  border border-white my-5 mx-10 rounded-2xl col-span-5 max-sm:col-span-1">
+              <div className="scale-x-[-1] rotate-180 flex justify-evenly  border border-white my-5 mx-10 rounded-2xl col-span-5 max-sm:col-span-1 max-sm:min-w-full max-sm:mx-0 md:min-w-full md:mx-0">
                 <div
-                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${attention_barProperties.color}-500 transition-all duration-1000 ${attention_barProperties.height}`}
+                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${attention_barProperties.color}-500 transition-all duration-1000 ${attention_barProperties.height} max-sm:min-w-fit`}
                 ></div>
                 <div
-                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${order_barProperties.color}-500 transition-all duration-1000 ${order_barProperties.height}`}
+                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${order_barProperties.color}-500 transition-all duration-1000 ${order_barProperties.height} max-sm:min-w-fit`}
                 ></div>
                 <div
-                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${memory_barProperties.color}-500 transition-all duration-1000 ${memory_barProperties.height}`}
+                  className={`relative border-2 border-t-0 border-b-black border-l-black border-r-black ml-4 w-44 bg-${memory_barProperties.color}-500 transition-all duration-1000 ${memory_barProperties.height} max-sm:min-w-fit`}
                 ></div>
-                <div className="legend col-span-1 my-20 grid grid-rows-3 gap-y-3 scale-y-[-1]">
-                  <div className="bg-white inline-block rounded-xl p-3">
-                    <div className="flex items-center justify-between">
+                <div className="legend col-span-1 my-20 grid grid-rows-3 gap-y-3 scale-y-[-1] max-sm:mt-72 max-sm:mb-5">
+                  <div className="bg-white inline-block rounded-xl p-3 max-sm:text-sm max-sm:w-20 max-sm:ml-10 max-sm:mr-2 max-sm:text-center">
+                    <div className="flex items-center justify-between max-sm:block">
                       <div className="pr-2 font-light text-black">Low</div>
-                      <div className="w-8 h-1 bg-red-500"></div>
+                      <div className="w-8 h-1 bg-red-500 max-sm:mt-2 max-sm:mx-2"></div>
                     </div>
                   </div>
-                  <div className="bg-white inline-block rounded-xl p-3">
-                    <div className="flex items-center justify-between">
+                  <div className="bg-white inline-block rounded-xl p-3 max-sm:text-sm max-sm:w-20 max-sm:ml-10 max-sm:mr-2">
+                    <div className="flex items-center justify-between max-sm:block">
                       <div className="pr-2 font-light text-black">Moderate</div>
-                      <div className="w-8 h-1 bg-yellow-500"></div>
+                      <div className="w-8 h-1 bg-yellow-500 max-sm:mt-2 max-sm:mx-2"></div>
                     </div>
                   </div>
-                  <div className="bg-white inline-block rounded-xl p-3">
-                    <div className="flex items-center justify-between">
+                  <div className="bg-white inline-block rounded-xl p-3 max-sm:text-sm max-sm:w-25 max-sm:ml-10 max-sm:mr-2 max-sm:text-center">
+                    <div className="flex items-center justify-between max-sm:block">
                       <div className="pr-2 font-light text-black">High</div>
-                      <div className="w-8 h-1 bg-green-500"></div>
+                      <div className="w-8 h-1 bg-green-500 max-sm:mt-2 max-sm:mx-2"></div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-evenly col-span-5 mr-60">
-                <p className="">Attention Span</p>
+              <div className="flex justify-evenly col-span-5 mr-60 max-sm:mr-0 md:ml-24">
+                <p className="max-sm:ml-5">Attention Span</p>
                 <p className="">Cognitive Processing</p>
-                <p className="">Emotional Processing</p>
+                <p className="max-sm:mr-16">Emotional Processing</p>
               </div>
             </div>
-            <div className="flex border border-white rounded-2xl m-10">
+            <div className="flex border border-white rounded-2xl m-10 max-sm:min-w-full max-sm:ml-0 md:min-w-full md:m-0">
               <div className="p-6 text-justify">
                 <h4 className="mb-4 text-2xl font-bold flex justify-center items-center">
                   <SiAnswer className="mr-2" />
                   Inference
                 </h4>
-                <p className="text-lg">
-                  {renderInference(
-                    attention_prediction,
-                    order_prediction,
-                    memory_prediction
-                  )}
-                </p>
+                <p className="text-lg">{renderInference()}</p>
                 <div className="mt-6 text-sm text-gray-300">
                   <p>
                     <b>Note:</b> The EEG data analysis provided here should be

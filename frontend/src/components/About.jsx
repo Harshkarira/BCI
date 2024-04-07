@@ -119,9 +119,9 @@ const About = () => {
         Contributors
       </h1>
       <div
-        className={`text-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ${
+        className={`text-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ${
           isDarkMode ? "text-white" : "text-black"
-        }`}
+        } place-items-center`}
       >
         <div className="col-span-1 p-6 text-center">
           <img
@@ -138,22 +138,13 @@ const About = () => {
             alt="Contributor 2"
             className="rounded-full border h-32 w-32 mx-auto mb-4"
           />
-          <h3>Sachin Choudhary</h3>
-          <p>Documentor</p>
+          <h3>Harsh Karira</h3>
+          <p>Researcher</p>
         </div>
         <div className="col-span-1 p-6 text-center">
           <img
             src="contributor3.jpg"
             alt="Contributor 3"
-            className="rounded-full border h-32 w-32 mx-auto mb-4"
-          />
-          <h3>Harsh Karira</h3>
-          <p>Frontend Developer</p>
-        </div>
-        <div className="col-span-1 p-6 text-center">
-          <img
-            src="contributor4.jpg"
-            alt="Contributor 4"
             className="rounded-full border h-32 w-32 mx-auto mb-4"
           />
           <h3>Siddhant Kodolkar</h3>
@@ -162,11 +153,11 @@ const About = () => {
         <div className="col-span-1 p-6 text-center">
           <img
             src="contributor5.jpg"
-            alt="Contributor 5"
+            alt="Contributor 4"
             className="rounded-full border h-32 w-32 mx-auto mb-4"
           />
           <h3>Sahil Madhyan</h3>
-          <p>Researcher</p>
+          <p>Frontend Developer</p>
         </div>
       </div>
     </div>
