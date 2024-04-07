@@ -16,17 +16,19 @@ import Navbar from "./Navbar";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
 import { FaUpload } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
+import { FaFileMedicalAlt } from "react-icons/fa";
 
 function FileUpload() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(null);
+  const [uploadMessage, setUploadMessage] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(false);
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-    setUploadStatus(null);
+    setUploadMessage(null);
   };
   const [isDarkMode, setIsDarkMode] = useState(
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -74,24 +76,27 @@ function FileUpload() {
         dispatch(updateOrderPrediction(responseData.predictions[1]));
         dispatch(updateMemoryPrediction(responseData.predictions[2]));
 
-        setUploadStatus("File uploaded successfully");
+        setUploadMessage("File uploaded successfully");
+        setUploadStatus(true);
 
         setTimeout(() => {
           navigate("/results");
         }, 2000);
       } else {
         console.error("File upload failed");
-        setUploadStatus("File upload failed");
+        setUploadMessage("File upload failed");
+        setUploadStatus(false);
       }
     } catch (error) {
       console.error("Error uploading file", error);
-      setUploadStatus("Error uploading file");
+      setUploadMessage("Error uploading file");
+      setUploadStatus(false);
     }
   };
 
   const handleDeleteFile = () => {
     setFile(null);
-    setUploadStatus(null);
+    setUploadMessage(null);
   };
 
   return (
@@ -99,43 +104,48 @@ function FileUpload() {
       <div
         className={`min-h-screen p-4 ${
           isDarkMode ? "bg-gray-900" : "bg-gray-50"
-        }`}
+        } max-sm:w-full max-sm:h-full max-sm:overflow-x-hidden mx-auto`}
       >
         <div className="flex justify-around">
           <Navbar isDarkMode={isDarkMode} />
           <div>
             <button
               onClick={toggleTheme}
-              className={`flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ${
-                isDarkMode ? "border-white" : "border-black"
-              }`}
+              className={`flex items-center justify-center bg-blue-500 border-blue-500 hover:bg-blue-700 hover:border-blue-700 text-white font-bold py-2 px-4 rounded-md max-sm:mt-4 max-sm:mb-4 max-sm:w-full max-sm:justify-center max-sm:items-center max-sm:rounded-md max-sm:p-1 max-sm:border`}
             >
-              <WiMoonAltThirdQuarter className="mr-2" />
+              <WiMoonAltThirdQuarter className="mr-2 max-sm:ml-2 max-sm:text-2xl" />
               Toggle Theme
             </button>
           </div>
         </div>
         <div className="">
-          <div className="flex justify-evenly items-center w-100 h-100">
+          <div className="grid grid-rows-1 grid-cols-3 lg:gap-64 max-sm:grid-cols-1 max-sm:grid-rows-3 place-items-center max-sm:gap-y-10">
             <img
               src={brain2}
-              className="h-72 mt-20 ml-20 rounded-2xl shadow-2xl"
+              className="h-auto lg:mt-20 lg:ml-20 rounded-2xl shadow-2xl col-span-1 max-sm:h-64 max-sm:rounded-2xl max-sm:shadow-2xl"
               alt="left img"
             />
-
             <div
               className={`" flex justify-center items-center rounded-lg p-10 ${
                 isDarkMode ? "border border-white" : "border border-black"
-              } mt-20 w-96 h-96 bg-gray-100"`}
+              } lg:mt-20 w-96 h-96 bg-gray-100" max-sm:w-72 max-sm:h-72`}
             >
-              <div className="rounded-md p-4">
+              <div className="rounded-md p-5">
+                <div
+                  className={`${
+                    isDarkMode ? "text-white " : "text-black "
+                  } flex items-center justify-center text-xl mb-10`}
+                >
+                  <FaFileMedicalAlt className="mr-2 text-5xl"/>Upload EEG Report
+                </div>
+
                 <input
                   type="file"
                   className={`text-center ${
                     isDarkMode
                       ? "text-white border border-white"
                       : "text-black border border-black"
-                  } mb-4 p-10 rounded-md  w-80 border-dashed`}
+                  } mb-4 p-10 rounded-md  w-80 border-dashed max-sm:p-4 max-sm:mb-2 max-sm:text-center max-sm:w-72 max-sm:border-dashed`}
                   onChange={handleFileChange}
                   placeholder="Upload PDF File"
                 />
@@ -169,15 +179,21 @@ function FileUpload() {
                     Delete File
                   </motion.button>
                 </div>
-                {uploadStatus && (
-                  <h3 className="text-green-400">{uploadStatus}</h3>
+                {uploadMessage && (
+                  <h3
+                    className={`${
+                      uploadStatus ? "text-green-400" : "text-red-400"
+                    } ml-3`}
+                  >
+                    {uploadMessage}
+                  </h3>
                 )}
               </div>
             </div>
             <img
               src={brain}
               alt="right img"
-              className="h-72 mr-20 mt-20 rounded-2xl shadow-2xl"
+              className="h-auto lg:mr-20 lg:mt-20 rounded-2xl shadow-2xl col-span-1 max-sm:h-64 max-sm:rounded-2xl max-sm:shadow-2xl"
             />
           </div>
           {file && (
@@ -189,7 +205,7 @@ function FileUpload() {
               >
                 PDF Preview:
               </h2>
-              <div className="px-32">
+              <div className="px-32 max-sm:px-0">
                 <Worker
                   workerUrl={`https://unpkg.com/pdfjs-dist@${"3.6.172"}/build/pdf.worker.min.js`}
                 >

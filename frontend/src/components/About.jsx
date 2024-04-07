@@ -25,11 +25,9 @@ const About = () => {
         <div>
           <button
             onClick={toggleTheme}
-            className={`flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ${
-              isDarkMode ? "border-white" : "border-black"
-            }`}
+            className={`flex items-center justify-center bg-blue-500 border-blue-500 hover:bg-blue-700 hover:border-blue-700 text-white font-bold py-2 px-4 rounded-md max-sm:mb-4 max-sm:w-full max-sm:justify-center max-sm:items-center max-sm:rounded-md max-sm:p-1 max-sm:border`}
           >
-            <WiMoonAltThirdQuarter className="mr-2" />
+            <WiMoonAltThirdQuarter className="mr-2 max-sm:ml-2 max-sm:text-2xl" />
             Toggle Theme
           </button>
         </div>
@@ -37,7 +35,7 @@ const About = () => {
       <h1
         className={`col-span-4 text-4xl mt-10 font-bold text-center justify-center items-center flex ${
           isDarkMode ? "text-white" : "text-black"
-        }`}
+        } max-sm:flex-col`}
       >
         <LuBrainCog className="mr-2" />
         EEG Cognitive Abilities
@@ -45,7 +43,7 @@ const About = () => {
       <div
         className={` text-xl grid grid-cols-4 gap-4 p-5 ${
           isDarkMode ? "text-white" : "text-black"
-        }`}
+        } `}
       >
         <div className="col-span-4 p-6 text-justify border rounded-2xl">
           <p>
@@ -78,7 +76,7 @@ const About = () => {
             insights into cognitive and emotional states.
           </p>
         </div>
-        <div className="col-span-2 p-6 text-justify border rounded-2xl">
+        <div className="col-span-2 p-6 text-justify border rounded-2xl max-sm:col-span-4 max-sm:p-3">
           <h3>F3 Node:-</h3>
           <ul className="ml-4">
             <li>
@@ -94,7 +92,7 @@ const About = () => {
             </li>
           </ul>
         </div>
-        <div className="col-span-2 p-6 text-justify border rounded-2xl">
+        <div className="col-span-2 p-6 text-justify border rounded-2xl max-sm:col-span-4 max-sm:p-3">
           <h3>F4 Node:-</h3>
           <ul className="ml-4">
             <li>
@@ -121,7 +119,7 @@ const About = () => {
         Contributors
       </h1>
       <div
-        className={`text-xl grid grid-cols-5 gap-4 ${
+        className={`text-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ${
           isDarkMode ? "text-white" : "text-black"
         }`}
       >

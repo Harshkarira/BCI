@@ -6,12 +6,12 @@ import { LuBrainCircuit } from "react-icons/lu";
 // eslint-disable-next-line react/prop-types
 const Navbar = ({ isDarkMode }) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex lg:items-center lg:justify-between max-sm:flex-col">
       <div className="">
         <h1
-          className={`flex items-center text-3xl font-bold text-center mr-32 ${
+          className={`flex lg:items-center text-3xl font-bold text-center mr-32 ${
             isDarkMode ? "text-white" : "text-black"
-          }`}
+          } max-sm:text-2xl max-sm:mr-0 max-sm:mb-4`}
         >
           <LuBrainCircuit className="mr-2" />
           Brain Computer Interface
