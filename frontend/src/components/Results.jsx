@@ -99,7 +99,8 @@ const Results = () => {
   // Function to generate inference statements based on predictions
   const renderInference = () => {
     // Combine predictions for all three aspects
-    const combinedPrediction = attention_prediction + " " + order_prediction + " " + memory_prediction;
+    const combinedPrediction =
+      attention_prediction + " " + order_prediction + " " + memory_prediction;
     switch (combinedPrediction) {
       case "Low attention Weak Weak":
         return "The EEG data suggests that the individual has a low attention span, which may affect their ability to concentrate on tasks. Additionally, cognitive processing appears to be weak, possibly leading to difficulty in problem-solving and decision-making. Memory function also seems weak, indicating potential challenges in retaining information.";
@@ -290,10 +291,10 @@ const Results = () => {
                 </div>
               </div>
 
-              <div className="flex justify-evenly col-span-5 mr-60 max-sm:mr-0 md:ml-24">
-                <p className="max-sm:ml-5">Attention Span</p>
-                <p className="">Cognitive Processing</p>
-                <p className="max-sm:mr-16">Emotional Processing</p>
+              <div className="col-span-4 grid grid-cols-3 gap-4 mb-5 lg:mx-40 max-sm:gap-2 max-sm:mr-20">
+                <p>Attention Span</p>
+                <p>Cognitive Processing</p>
+                <p>Emotional Processing</p>
               </div>
             </div>
             <div className="flex border border-white rounded-2xl m-10 max-sm:min-w-full max-sm:ml-0 md:min-w-full md:m-0">
